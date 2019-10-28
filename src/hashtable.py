@@ -12,9 +12,10 @@ class HashTable:
     A hash table that with `capacity` buckets
     that accepts string keys
     '''
-    def __init__(self, capacity):
+    def __init__(self, capacity):  #initilization 
         self.capacity = capacity  # Number of buckets in the hash table
         self.storage = [None] * capacity
+        self.count =0
 
 
     def _hash(self, key):
@@ -40,18 +41,38 @@ class HashTable:
         Take an arbitrary key and return a valid integer index
         within the storage capacity of the hash table.
         '''
-        return self._hash(key) % self.capacity
+        return self._hash(key) % self.capacity #using hash function - 
+
+###############################################################################################
 
 
-    def insert(self, key, value):
+## 1.  Must INSERT first  before doing anthing else ##
+
+    def insert(self, key, value):  ##expecting key and value
         '''
         Store the value with the given key.
 
         Hash collisions should be handled with Linked List Chaining.
 
-        Fill this in.
+        Fill this in.  #hashmod the key first
+
+         
+         
+
         '''
-        pass
+        index = self._hash_mod(key)  
+        ## 1. HASMOD KEY FIRST  
+
+        # 2. then check to see if the key is in storage 
+
+        if self.storage[index] is not None:
+            print('warning: index collions')
+            return
+
+        #3. Put value in storage 
+            self.storage[index] = value
+
+
 
 
 
